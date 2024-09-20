@@ -62,6 +62,10 @@ assert_value_type!(__CONTIGUOUS_STACK_BOUNDARY, u32);
 pub use hopter_conf_params::_CONTIGUOUS_STACK_BOTTOM;
 assert_value_type!(_CONTIGUOUS_STACK_BOTTOM, u32);
 
+#[doc(inline)]
+pub use hopter_conf_params::_CONTIGUOUS_STACK_LENGTH;
+assert_value_type!(_CONTIGUOUS_STACK_LENGTH, u32);
+
 // Stacks are assumed to grow downwards.
 const_assert!(__CONTIGUOUS_STACK_BOUNDARY < _CONTIGUOUS_STACK_BOTTOM);
 // Stacks should be 8-byte aligned.
