@@ -29,11 +29,11 @@ https://github.com/rust-embedded/cortex-m/blob/24380715ce37c5f658033195464ffa3ba
 INCLUDE memory.x
 
 /* # Entry point = reset vector */
-ENTRY(HopterReset);
-EXTERN(__HOPTER_RESET_VECTOR); /* depends on the `HopterReset` symbol */
+ENTRY(HopterResetM7);
+EXTERN(__HOPTER_RESET_VECTOR_M7); /* depends on the `HopterReset` symbol */
 
 /* # Exception vectors */
-EXTERN(__HOPTER_EXCEPTIONS); /* depends on all the these PROVIDED symbols */
+EXTERN(__HOPTER_EXCEPTIONS_M7); /* depends on all the these PROVIDED symbols */
 
 EXTERN(HopterDefaultHandler);
 EXTERN(HopterHardFaultTrampoline);
@@ -49,6 +49,16 @@ PROVIDE(PendSV = HopterDefaultHandler);
 PROVIDE(SysTick = HopterDefaultHandler);
 
 PROVIDE(ADC = HopterDefaultHandler);
+PROVIDE(ADC1_2 = HopterDefaultHandler);
+PROVIDE(ADC3 = HopterDefaultHandler);
+PROVIDE(BDMA_CH1 = HopterDefaultHandler);
+PROVIDE(BDMA_CH2 = HopterDefaultHandler);
+PROVIDE(BDMA_CH3 = HopterDefaultHandler);
+PROVIDE(BDMA_CH4 = HopterDefaultHandler);
+PROVIDE(BDMA_CH5 = HopterDefaultHandler);
+PROVIDE(BDMA_CH6 = HopterDefaultHandler);
+PROVIDE(BDMA_CH7 = HopterDefaultHandler);
+PROVIDE(BDMA_CH8 = HopterDefaultHandler);
 PROVIDE(CAN1_RX0 = HopterDefaultHandler);
 PROVIDE(CAN1_RX1 = HopterDefaultHandler);
 PROVIDE(CAN1_SCE = HopterDefaultHandler);
@@ -61,15 +71,30 @@ PROVIDE(CAN3_RX0 = HopterDefaultHandler);
 PROVIDE(CAN3_RX1 = HopterDefaultHandler);
 PROVIDE(CAN3_SCE = HopterDefaultHandler);
 PROVIDE(CAN3_TX = HopterDefaultHandler);
+PROVIDE(CEC = HopterDefaultHandler);
+PROVIDE(CM4_SEV_IT = HopterDefaultHandler);
+PROVIDE(CM7_SEV_IT = HopterDefaultHandler);
+PROVIDE(COMP = HopterDefaultHandler);
+PROVIDE(CRS = HopterDefaultHandler);
 PROVIDE(CRYP = HopterDefaultHandler);
 PROVIDE(CRYPTO = HopterDefaultHandler);
 PROVIDE(DCMI = HopterDefaultHandler);
 PROVIDE(DFSDM1_FLT0 = HopterDefaultHandler);
 PROVIDE(DFSDM1_FLT1 = HopterDefaultHandler);
+PROVIDE(DFSDM1_FLT2 = HopterDefaultHandler);
+PROVIDE(DFSDM1_FLT3 = HopterDefaultHandler);
 PROVIDE(DFSDM2_FILTER1 = HopterDefaultHandler);
 PROVIDE(DFSDM2_FILTER2 = HopterDefaultHandler);
 PROVIDE(DFSDM2_FILTER3 = HopterDefaultHandler);
 PROVIDE(DFSDM2_FILTER4 = HopterDefaultHandler);
+PROVIDE(DMA1_STR0 = HopterDefaultHandler);
+PROVIDE(DMA1_STR1 = HopterDefaultHandler);
+PROVIDE(DMA1_STR2 = HopterDefaultHandler);
+PROVIDE(DMA1_STR3 = HopterDefaultHandler);
+PROVIDE(DMA1_STR4 = HopterDefaultHandler);
+PROVIDE(DMA1_STR5 = HopterDefaultHandler);
+PROVIDE(DMA1_STR6 = HopterDefaultHandler);
+PROVIDE(DMA1_STR7 = HopterDefaultHandler);
 PROVIDE(DMA1_STREAM0 = HopterDefaultHandler);
 PROVIDE(DMA1_STREAM1 = HopterDefaultHandler);
 PROVIDE(DMA1_STREAM2 = HopterDefaultHandler);
@@ -79,6 +104,14 @@ PROVIDE(DMA1_STREAM5 = HopterDefaultHandler);
 PROVIDE(DMA1_STREAM6 = HopterDefaultHandler);
 PROVIDE(DMA1_STREAM7 = HopterDefaultHandler);
 PROVIDE(DMA2D = HopterDefaultHandler);
+PROVIDE(DMA2_STR0 = HopterDefaultHandler);
+PROVIDE(DMA2_STR1 = HopterDefaultHandler);
+PROVIDE(DMA2_STR2 = HopterDefaultHandler);
+PROVIDE(DMA2_STR3 = HopterDefaultHandler);
+PROVIDE(DMA2_STR4 = HopterDefaultHandler);
+PROVIDE(DMA2_STR5 = HopterDefaultHandler);
+PROVIDE(DMA2_STR6 = HopterDefaultHandler);
+PROVIDE(DMA2_STR7 = HopterDefaultHandler);
 PROVIDE(DMA2_STREAM0 = HopterDefaultHandler);
 PROVIDE(DMA2_STREAM1 = HopterDefaultHandler);
 PROVIDE(DMA2_STREAM2 = HopterDefaultHandler);
@@ -87,6 +120,9 @@ PROVIDE(DMA2_STREAM4 = HopterDefaultHandler);
 PROVIDE(DMA2_STREAM5 = HopterDefaultHandler);
 PROVIDE(DMA2_STREAM6 = HopterDefaultHandler);
 PROVIDE(DMA2_STREAM7 = HopterDefaultHandler);
+PROVIDE(DMAMUX1_OV = HopterDefaultHandler);
+PROVIDE(DMAMUX2_OVR = HopterDefaultHandler);
+PROVIDE(DSI = HopterDefaultHandler);
 PROVIDE(DSIHOST = HopterDefaultHandler);
 PROVIDE(ETH = HopterDefaultHandler);
 PROVIDE(ETH_WKUP = HopterDefaultHandler);
@@ -100,11 +136,25 @@ PROVIDE(EXTI20 = HopterDefaultHandler);
 PROVIDE(EXTI3 = HopterDefaultHandler);
 PROVIDE(EXTI4 = HopterDefaultHandler);
 PROVIDE(EXTI9_5 = HopterDefaultHandler);
+PROVIDE(FDCAN1_IT0 = HopterDefaultHandler);
+PROVIDE(FDCAN1_IT1 = HopterDefaultHandler);
+PROVIDE(FDCAN2_IT0 = HopterDefaultHandler);
+PROVIDE(FDCAN2_IT1 = HopterDefaultHandler);
+PROVIDE(FDCAN_CAL = HopterDefaultHandler);
 PROVIDE(FLASH = HopterDefaultHandler);
 PROVIDE(FMC = HopterDefaultHandler);
 PROVIDE(FPU = HopterDefaultHandler);
 PROVIDE(FSMC = HopterDefaultHandler);
 PROVIDE(HASH_RNG = HopterDefaultHandler);
+PROVIDE(HOLD_CORE = HopterDefaultHandler);
+PROVIDE(HRTIM1_FLT = HopterDefaultHandler);
+PROVIDE(HRTIM1_MST = HopterDefaultHandler);
+PROVIDE(HRTIM1_TIMA = HopterDefaultHandler);
+PROVIDE(HRTIM1_TIMC = HopterDefaultHandler);
+PROVIDE(HRTIM1_TIMD = HopterDefaultHandler);
+PROVIDE(HRTIM_TIMB = HopterDefaultHandler);
+PROVIDE(HRTIM_TIME = HopterDefaultHandler);
+PROVIDE(HSEM0 = HopterDefaultHandler);
 PROVIDE(I2C1_ER = HopterDefaultHandler);
 PROVIDE(I2C1_ERR = HopterDefaultHandler);
 PROVIDE(I2C1_EV = HopterDefaultHandler);
@@ -121,41 +171,68 @@ PROVIDE(I2CFMP1ERROR = HopterDefaultHandler);
 PROVIDE(I2CFMP1EVENT = HopterDefaultHandler);
 PROVIDE(I2CFMP1_ERROR = HopterDefaultHandler);
 PROVIDE(I2CFMP1_EVENT = HopterDefaultHandler);
+PROVIDE(JPEG = HopterDefaultHandler);
 PROVIDE(LCD_TFT = HopterDefaultHandler);
 PROVIDE(LCD_TFT_1 = HopterDefaultHandler);
 PROVIDE(LPTIM1 = HopterDefaultHandler);
 PROVIDE(LPTIM1_OR_IT_EIT_23 = HopterDefaultHandler);
+PROVIDE(LPTIM2 = HopterDefaultHandler);
+PROVIDE(LPTIM3 = HopterDefaultHandler);
+PROVIDE(LPTIM4 = HopterDefaultHandler);
+PROVIDE(LPTIM5 = HopterDefaultHandler);
+PROVIDE(LPUART = HopterDefaultHandler);
 PROVIDE(LTDC = HopterDefaultHandler);
 PROVIDE(LTDC_ER = HopterDefaultHandler);
+PROVIDE(MDIOS = HopterDefaultHandler);
+PROVIDE(MDIOS_WKUP = HopterDefaultHandler);
+PROVIDE(MDMA = HopterDefaultHandler);
 PROVIDE(OTG_FS = HopterDefaultHandler);
+PROVIDE(OTG_FS_EP1_IN = HopterDefaultHandler);
+PROVIDE(OTG_FS_EP1_OUT = HopterDefaultHandler);
 PROVIDE(OTG_FS_WKUP = HopterDefaultHandler);
 PROVIDE(OTG_HS = HopterDefaultHandler);
 PROVIDE(OTG_HS_EP1_IN = HopterDefaultHandler);
 PROVIDE(OTG_HS_EP1_OUT = HopterDefaultHandler);
 PROVIDE(OTG_HS_WKUP = HopterDefaultHandler);
 PROVIDE(PVD = HopterDefaultHandler);
+PROVIDE(PVD_PVM = HopterDefaultHandler);
 PROVIDE(PWM1_UP = HopterDefaultHandler);
 PROVIDE(QUADSPI = HopterDefaultHandler);
 PROVIDE(QUAD_SPI = HopterDefaultHandler);
+PROVIDE(RAMECC = HopterDefaultHandler);
 PROVIDE(RCC = HopterDefaultHandler);
 PROVIDE(RNG = HopterDefaultHandler);
 PROVIDE(RTC_ALARM = HopterDefaultHandler);
+PROVIDE(RTC_TAMP_STAMP_CSS_LSE = HopterDefaultHandler);
 PROVIDE(RTC_WKUP = HopterDefaultHandler);
 PROVIDE(SAI1 = HopterDefaultHandler);
+PROVIDE(SAI2 = HopterDefaultHandler);
+PROVIDE(SAI3 = HopterDefaultHandler);
+PROVIDE(SAI4 = HopterDefaultHandler);
 PROVIDE(SDIO = HopterDefaultHandler);
+PROVIDE(SDMMC = HopterDefaultHandler);
+PROVIDE(SDMMC1 = HopterDefaultHandler);
+PROVIDE(SPDIF = HopterDefaultHandler);
 PROVIDE(SPI1 = HopterDefaultHandler);
 PROVIDE(SPI2 = HopterDefaultHandler);
 PROVIDE(SPI3 = HopterDefaultHandler);
 PROVIDE(SPI4 = HopterDefaultHandler);
 PROVIDE(SPI5 = HopterDefaultHandler);
 PROVIDE(SPI6 = HopterDefaultHandler);
+PROVIDE(SWPMI1 = HopterDefaultHandler);
 PROVIDE(TAMP_STAMP = HopterDefaultHandler);
 PROVIDE(TIM12 = HopterDefaultHandler);
 PROVIDE(TIM13 = HopterDefaultHandler);
 PROVIDE(TIM14 = HopterDefaultHandler);
+PROVIDE(TIM15 = HopterDefaultHandler);
+PROVIDE(TIM16 = HopterDefaultHandler);
+PROVIDE(TIM17 = HopterDefaultHandler);
+PROVIDE(TIM1_BRK = HopterDefaultHandler);
 PROVIDE(TIM1_BRK_TIM9 = HopterDefaultHandler);
 PROVIDE(TIM1_CC = HopterDefaultHandler);
+PROVIDE(TIM1_TRG_COM = HopterDefaultHandler);
 PROVIDE(TIM1_TRG_COM_TIM11 = HopterDefaultHandler);
+PROVIDE(TIM1_UP = HopterDefaultHandler);
 PROVIDE(TIM1_UP_TIM10 = HopterDefaultHandler);
 PROVIDE(TIM2 = HopterDefaultHandler);
 PROVIDE(TIM3 = HopterDefaultHandler);
@@ -170,6 +247,7 @@ PROVIDE(TIM8_BRK_TIM12 = HopterDefaultHandler);
 PROVIDE(TIM8_CC = HopterDefaultHandler);
 PROVIDE(TIM8_TRG_COM_TIM14 = HopterDefaultHandler);
 PROVIDE(TIM8_UP_TIM13 = HopterDefaultHandler);
+PROVIDE(TIM_CC = HopterDefaultHandler);
 PROVIDE(UART10 = HopterDefaultHandler);
 PROVIDE(UART4 = HopterDefaultHandler);
 PROVIDE(UART5 = HopterDefaultHandler);
@@ -183,51 +261,59 @@ PROVIDE(USART4 = HopterDefaultHandler);
 PROVIDE(USART6 = HopterDefaultHandler);
 PROVIDE(USART7 = HopterDefaultHandler);
 PROVIDE(USART8 = HopterDefaultHandler);
+PROVIDE(WKUP = HopterDefaultHandler);
 PROVIDE(WWDG = HopterDefaultHandler);
+PROVIDE(WWDG1 = HopterDefaultHandler);
+PROVIDE(WWDG1_RST = HopterDefaultHandler);
+PROVIDE(WWDG2 = HopterDefaultHandler);
+PROVIDE(WWDG2_RST = HopterDefaultHandler);
+
 
 /* # Interrupt vectors */
-EXTERN(__HOPTER_INTERRUPTS); /* `static` variable similar to `__HOPTER_EXCEPTIONS` */
+EXTERN(__HOPTER_INTERRUPTS_M7); /* `static` variable similar to `__HOPTER_EXCEPTIONS` */
+EXTERN(__HOPTER_INTERRUPTS_M4);
 
 /* This is where the contiguous call stack will be allocated. */
 /* The stack grows downward. */
-__contiguous_stack_bottom = ORIGIN(RAM) + _contiguous_stack_length;
+__contiguous_stack_bottom_m7 = ORIGIN(RAM) + _contiguous_stack_length;
+__contiguous_stack_bottom_m4 = ORIGIN(RAM) + _contiguous_stack_length + _contiguous_stack_length;
 
 __ram_end = ORIGIN(RAM) + LENGTH(RAM);
 
 /* # Sections */
 SECTIONS
 {
-  /* ## Sections in FLASH */
+  /* ## Sections in FLASH_M7 */
   /* ### Vector table */
-  .hopter_vector_table ORIGIN(FLASH) :
+  .hopter_vector_table_m7 ORIGIN(FLASH_M7) :
   {
     /* Initial Stack Pointer (SP) value */
-    LONG(__contiguous_stack_bottom);
+    LONG(__contiguous_stack_bottom_m7);
 
     /* Reset vector */
-    KEEP(*(.hopter_vector_table.reset_vector)); /* this is the `__RESET_VECTOR` symbol */
-    __hopter_reset_vector = .;
+    KEEP(*(.hopter_vector_table_m7.reset_vector_m7)); /* this is the `__RESET_VECTOR` symbol */
+    __hopter_reset_vector_m7 = .;
 
     /* Exceptions */
-    KEEP(*(.hopter_vector_table.exceptions)); /* this is the `__EXCEPTIONS` symbol */
-    __eexceptions = .;
+    KEEP(*(.hopter_vector_table_m7.exceptions_m7)); /* this is the `__EXCEPTIONS` symbol */
+    __eexceptions_m7 = .;
 
     /* Device specific interrupts */
-    KEEP(*(.hopter_vector_table.interrupts)); /* this is the `__INTERRUPTS` symbol */
-  } > FLASH
+    KEEP(*(.hopter_vector_table_m7.interrupts_m7)); /* this is the `__INTERRUPTS` symbol */
+  } > FLASH_M7
 
-  PROVIDE(_stext = ADDR(.hopter_vector_table) + SIZEOF(.hopter_vector_table));
+  PROVIDE(_stext_m7 = ADDR(.hopter_vector_table_m7) + SIZEOF(.hopter_vector_table_m7));
 
   /* ### .text */
-  .text _stext :
+  .text _stext_m7 :
   {
     /* place these 2 close to each other or the `b` instruction will fail to link */
-    *(.HopterReset);
+    *(.HopterResetM7);
 
     *(.text .text.*);
     . = ALIGN(16);
     __etext = .;
-  } > FLASH
+  } > FLASH_M7
 
   /* ### .rodata */
   .rodata __etext : ALIGN(16)
@@ -239,7 +325,7 @@ SECTIONS
        section will have the correct alignment. */
     . = ALIGN(4);
     __erodata = .;
-  } > FLASH
+  } > FLASH_M7
 
   /* ### .ARM.exidx */
   .ARM.exidx __erodata : ALIGN(4)
@@ -257,7 +343,7 @@ SECTIONS
        section will have the correct alignment. */
     . = ALIGN(4);
     __earm_exidx = .;
-  } > FLASH
+  } > FLASH_M7
 
   /* ### .ARM.extab */
   .ARM.extab __earm_exidx : ALIGN(4)
@@ -271,7 +357,7 @@ SECTIONS
        section will have the correct alignment. */
     . = ALIGN(4);
     __earm_extab = .;
-  } > FLASH
+  } > FLASH_M7
 
   /* ## Sections in RAM */
   /* ### contiguous stack */
@@ -290,7 +376,7 @@ SECTIONS
     *(.data .data.*);
     . = ALIGN(4); /* 4-byte align the end (VMA) of this section */
     __edata = .;
-  } > RAM AT>FLASH
+  } > RAM AT>FLASH_M7
 
   /* LMA of .data */
   __sidata = LOADADDR(.data);
@@ -303,7 +389,7 @@ SECTIONS
     *(.bss .bss.*);
     . = ALIGN(4); /* 4-byte align the end (VMA) of this section */
     __ebss = .;
-  } > RAM AT>FLASH
+  } > RAM AT>FLASH_M7
 
   /* Place the heap right after `.bss` */
   . = ALIGN(4);
@@ -316,6 +402,34 @@ SECTIONS
   {
     KEEP(*(.got .got.*));
   }
+
+  /* ## Sections in FLASH_M4 */
+  /* ### Vector table */
+  .hopter_vector_table_m4 ORIGIN(FLASH_M4) :
+  {
+    /* Initial Stack Pointer (SP) value */
+    LONG(__contiguous_stack_bottom_m4);
+
+    /* Reset vector */
+    KEEP(*(.hopter_vector_table_m4.reset_vector_m4)); /* this is the `__RESET_VECTOR` symbol */
+    __hopter_reset_vector_m4 = .;
+
+    /* Exceptions */
+    KEEP(*(.hopter_vector_table_m4.exceptions_m4)); /* this is the `__EXCEPTIONS` symbol */
+    __eexceptions_m4 = .;
+
+    /* Device specific interrupts */
+    KEEP(*(.hopter_vector_table_m4.interrupts_m4)); /* this is the `__INTERRUPTS` symbol */
+  } > FLASH_M4
+
+  PROVIDE(_stext_m4 = ADDR(.hopter_vector_table_m4) + SIZEOF(.hopter_vector_table_m4));
+
+  /* ### .text */
+  _ _stext_m4 :
+  {
+    *(.HopterResetM4);
+  } > FLASH_M4
+
 
   /* ## Discarded sections */
   /DISCARD/ :
@@ -335,7 +449,7 @@ SECTIONS
 
 /* Do not exceed this mark in the error messages below                                    | */
 /* # Alignment checks */
-ASSERT(ORIGIN(FLASH) % 4 == 0, "
+ASSERT(ORIGIN(FLASH_M7) % 4 == 0, "
 ERROR(hopter): the start of the FLASH region must be 4-byte aligned");
 
 ASSERT(ORIGIN(RAM) % 4 == 0, "
@@ -356,13 +470,20 @@ BUG(hopter): start of .heap is not 4-byte aligned");
 /* # Position checks */
 
 /* ## .vector_table */
-ASSERT(__hopter_reset_vector == ADDR(.hopter_vector_table) + 0x8, "
-BUG(hopter): the reset vector is missing");
+ASSERT(__hopter_reset_vector_m7 == ADDR(.hopter_vector_table_m7) + 0x8, "
+BUG(hopter): the reset vector for m7 core is missing");
 
-ASSERT(__eexceptions == ADDR(.hopter_vector_table) + 0x40, "
-BUG(hopter): the exception vectors are missing");
+ASSERT(__eexceptions_m7 == ADDR(.hopter_vector_table_m7) + 0x40, "
+BUG(hopter): the exception vectors for m7 core are missing");
 
-ASSERT(SIZEOF(.hopter_vector_table) > 0x40, "
+ASSERT(__hopter_reset_vector_m4 == ADDR(.hopter_vector_table_m4) + 0x8, "
+BUG(hopter): the reset vector for m4 core is missing");
+
+ASSERT(__eexceptions_m4 == ADDR(.hopter_vector_table_m4) + 0x40, "
+BUG(hopter): the exception vectors for m4 core are missing");
+
+
+ASSERT(SIZEOF(.hopter_vector_table_m7) > 0x40, "
 ERROR(hopter): The interrupt vectors are missing.
 Possible solutions, from most likely to less likely:
 - Link to a svd2rust generated device crate
@@ -371,11 +492,11 @@ may be enabling it)
 - Supply the interrupt handlers yourself. Check the documentation for details.");
 
 /* ## .text */
-ASSERT(ADDR(.hopter_vector_table) + SIZEOF(.hopter_vector_table) <= _stext, "
-ERROR(hopter): The .text section can't be placed inside the .hopter_vector_table section
-Set _stext to an address greater than the end of .hopter_vector_table (See output of `nm`)");
+ASSERT(ADDR(.hopter_vector_table_m7) + SIZEOF(.hopter_vector_table_m7) <= _stext_m7, "
+ERROR(hopter): The .text section can't be placed inside the .hopter_vector_table_m7 section
+Set _stext to an address greater than the end of .hopter_vector_table_m7 (See output of `nm`)");
 
-ASSERT(_stext + SIZEOF(.text) < ORIGIN(FLASH) + LENGTH(FLASH), "
+ASSERT(_stext_m7 + SIZEOF(.text) < ORIGIN(FLASH_M7) + LENGTH(FLASH_M7), "
 ERROR(hopter): The .text section must be placed inside the FLASH memory.
 Set _stext to an address smaller than 'ORIGIN(FLASH) + LENGTH(FLASH)'");
 
@@ -387,7 +508,7 @@ the 'cc' crate then modify your build script to compile the C code _without_
 the -fPIC flag. See the documentation of the `cc::Build.pic` method for details.");
 /* Do not exceed this mark in the error messages above                                    | */
 
-ASSERT(SIZEOF(.hopter_vector_table) <= 0x400, "
+ASSERT(SIZEOF(.hopter_vector_table_m7) <= 0x400, "
 There can't be more than 240 interrupt handlers. This may be a bug in
 your device crate, or you may have registered more than 240 interrupt
 handlers.");

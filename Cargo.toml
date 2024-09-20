@@ -89,7 +89,7 @@ default-features = true
 
 # [dev-dependencies.stm32f4xx-hal]
 # version = "0.21.0"
-# default-features = true
+# default-features = false
 
 [package.metadata.docs.rs]
 targets = [
