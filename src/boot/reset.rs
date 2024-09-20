@@ -6,10 +6,10 @@ use super::system_init;
 use crate::{config, unwind};
 use core::arch::asm;
 
-#[link_section = ".HopterReset"]
-#[export_name = "HopterReset"]
+#[link_section = ".HopterResetM7"]
+#[export_name = "HopterResetM7"]
 #[naked]
-pub(super) unsafe extern "C" fn entry() -> ! {
+pub(super) unsafe extern "C" fn entry_m7() -> ! {
     extern "C" {
         // These symbols come from `link.ld`
         static mut __sbss: u32;
@@ -69,6 +69,30 @@ pub(super) unsafe extern "C" fn entry() -> ! {
         memcpy = sym memcpy,
         memset = sym memset,
         system_start = sym system_init::system_start,
+        options(noreturn)
+    );
+}
+
+#[link_section = ".HopterResetM4"]
+#[export_name = "HopterResetM4"]
+#[naked]
+pub(super) unsafe extern "C" fn entry_m4() -> ! {
+    // Infinite loop.
+    extern "C" {
+        fn memset(ptr: *mut u8, val: u8, len: usize);
+    }
+    asm!(
+        // Fill 0xAA to the contiguous stack region. Will help us diagnose
+        // stack overflow.
+        "mov r0, #0x20002000",
+        "mov r1, #0xAA",
+        "ldr r2, ={cont_stk_len}",
+        "bl  {memset}",
+        // Call into Rust code.
+        "b  {system_start}",
+        cont_stk_len = const { config::_CONTIGUOUS_STACK_LENGTH },
+        system_start = sym system_init::system_start,
+        memset = sym memset,
         options(noreturn)
     );
 }
