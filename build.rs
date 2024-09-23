@@ -11,6 +11,11 @@ fn main() {
     // Write the link script to the crate output directory.
     let out = &PathBuf::from(env::var_os("OUT_DIR").unwrap());
     let mut f = File::create(out.join("link.ld")).unwrap();
+
+    #[cfg(feature = "stm32h747")]
+    f.write_all(include_bytes!("link_dual_core.ld.in")).unwrap();
+
+    #[cfg(not(feature = "stm32h747"))]
     f.write_all(include_bytes!("link.ld.in")).unwrap();
 
     // Add the output directory to linker search path.
