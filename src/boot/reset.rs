@@ -113,26 +113,13 @@ unsafe extern "C" fn deferred_unwind_init() {
     )
 }
 
-#[link_section = ".HopterResetM4"]
-#[export_name = "HopterResetM4"]
+#[cfg(not(feature = "unwind"))]
 #[naked]
-pub(super) unsafe extern "C" fn entry_m4() -> ! {
-    // Infinite loop.
-    extern "C" {
-        fn memset(ptr: *mut u8, val: u8, len: usize);
-    }
+unsafe extern "C" fn deferred_unwind_init() {
     asm!(
-        // Fill 0xAA to the contiguous stack region. Will help us diagnose
-        // stack overflow.
-        "mov r0, #0x20002000",
-        "mov r1, #0xAA",
-        "ldr r2, ={cont_stk_len}",
-        "bl  {memset}",
-        // Call into Rust code.
+        // Call into Rust code when unwinding is not enabled.
         "b  {system_start}",
-        cont_stk_len = const { config::_CONTIGUOUS_STACK_LENGTH },
         system_start = sym system_init::system_start,
-        memset = sym memset,
         options(noreturn)
-    );
+    )
 }
