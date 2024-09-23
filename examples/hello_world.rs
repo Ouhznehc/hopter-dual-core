@@ -10,6 +10,8 @@ const CPUID: *const u32 = 0xE000_ED00 as *const u32;
 fn detect_core() {
     let cpuid = unsafe { core::ptr::read_volatile(CPUID) };
 
+    dbg_println!("CPUID: 0x{:08X}", cpuid);
+
     let part = (cpuid >> 4) & 0xFFF;
 
     match part {

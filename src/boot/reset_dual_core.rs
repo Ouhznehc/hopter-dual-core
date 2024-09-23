@@ -97,6 +97,8 @@ pub(super) unsafe extern "C" fn entry_m4() -> ! {
         "mov r10, #11",
         "mov r11, #12",
         "mov r12, #13",
+        "ldr r0, =0xE000ED00",
+        "ldr r1, [r0]",
         "bkpt #0",
         "b  .",
         options(noreturn)
